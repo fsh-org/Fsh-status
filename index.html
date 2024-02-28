@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fsh status</title>
+    <!-- Boiler plate------ -->
+    <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
+    <meta name="description" content="Fsh status, status of all fsh things.">
+    <!-- ------- -->
+    <link rel="stylesheet" href="https://fsh.plus/newStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://fsh.plus/fsh.png"/>
+    <meta name="theme-color" content="#a89c9b">
+    <!-- ------------------ -->
+    <style>
+      label.on {
+        color: #0f0;
+      }
+      label.off {
+        color: #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fsh status</h1>
+    <li>Main site (https://fsh.plus) <label id="main">Checking</label></li>
+    <li>Bot (https://bot.fsh.plus) <label id="bot">Checking</label></li>
+    <li>Api (https://api.fsh.plus) <label id="api">Checking</label></li>
+    <li>Chat (https://chat.fsh.plus) <label id="chat">Checking</label></li>
+    <li>HTMS (https://htms.fsh.plus) <label id="htms">Checking</label></li>
+    <li>Link (https://link.fsh.plus) <label id="link">Checking</label></li>
+    <li>Radio (https://radio.fsh.plus) <label id="radio">Checking</label></li>
+    <li>HTML (https://html.fsh.plus) <label id="html">Checking</label></li>
+    <li>ToDo (https://todo.fsh.plus) <label id="todo">Checking</label></li>
+  </body>
+  <script>
+    function check(id, url) {
+    fetch(url).then(tt=>{
+      if (tt.ok){
+        document.getElementById(id).innerHTML = 'Online';
+        document.getElementById(id).classList.add('on');
+      } else {
+        document.getElementById(id).innerHTML = 'Offline';
+        document.getElementById(id).classList.add('off');
+      }})
+    }
+    check('main', 'https://fsh.plus')
+    check('bot', 'https://bot.fsh.plus')
+    check('api', 'https://api.fsh.plus')
+    check('chat', 'https://chat.fsh.plus')
+    check('htms', 'https://htms.fsh.plus')
+    check('link', 'https://link.fsh.plus')
+    check('radio', 'https://radio.fsh.plus')
+    check('html', 'https://html.fsh.plus')
+    check('todo', 'https://todo.fsh.plus')
+  </script>
+</html>
