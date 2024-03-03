@@ -24,6 +24,7 @@
   </head>
   <body>
     <h1>Fsh status</h1>
+    <h2>Pages:</h2>
     <li>Main site (https://fsh.plus) <label id="main">Checking</label></li>
     <li>Bot (https://bot.fsh.plus) <label id="bot">Checking</label></li>
     <li>Api (https://api.fsh.plus) <label id="api">Checking</label></li>
@@ -33,6 +34,9 @@
     <li>Radio (https://radio.fsh.plus) <label id="radio">Checking</label></li>
     <li>HTML (https://html.fsh.plus) <label id="html">Checking</label></li>
     <li>ToDo (https://todo.fsh.plus) <label id="todo">Checking</label></li>
+    <li>PT (https://pt.fsh.plus) <label id="pt">Checking</label></li>
+    <h2>Internal:</h2>
+    <li>Server for dynamic content <label id="sdc">Checking</label></li>
   </body>
   <script>
     function check(id, url) {
@@ -54,5 +58,8 @@
     check('radio', 'https://radio.fsh.plus')
     check('html', 'https://html.fsh.plus')
     check('todo', 'https://todo.fsh.plus')
+    check('pt', 'https://pt.fsh.plus')
+
+    check('sdc', 'https://pt-server.fsh.plus')
   </script>
 </html>
