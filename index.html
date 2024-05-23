@@ -14,6 +14,13 @@
     <meta name="theme-color" content="#a89c9b">
     <!-- ------------------ -->
     <style>
+      body {
+        text-align: center;
+      }
+      div {
+        width: fit-content;
+        text-align: center;
+      }
       label {
         color: #ff0;
       }
@@ -28,18 +35,20 @@
   <body>
     <h1>Fsh status</h1>
     <h2>Pages:</h2>
-    <li>Main site (https://fsh.plus) <label id="main">Checking</label></li>
-    <li>Bot (https://bot.fsh.plus) <label id="bot">Checking</label></li>
-    <li>Api (https://api.fsh.plus) <label id="api">Checking</label></li>
-    <li>Chat (https://chat.fsh.plus) <label id="chat">Checking</label></li>
-    <li>HTMS (https://htms.fsh.plus) <label id="htms">Checking</label></li>
-    <li>Link (https://link.fsh.plus) <label id="link">Checking</label></li>
-    <li>Radio (https://radio.fsh.plus) <label id="radio">Checking</label></li>
-    <li>HTML (https://html.fsh.plus) <label id="html">Checking</label></li>
-    <li>ToDo (https://todo.fsh.plus) <label id="todo">Checking</label></li>
-    <li>PT (https://pt.fsh.plus) <label id="pt">Checking</label></li>
-    <h2>Internal:</h2>
-    <li>Server for dynamic content <label id="sdc">Checking</label></li>
+    <div>
+      <li>Main site (https://fsh.plus) <label id="main">Checking</label></li>
+      <li>Bot (https://bot.fsh.plus) <label id="bot">Checking</label></li>
+      <li>Api (https://api.fsh.plus) <label id="api">Checking</label></li>
+      <li>Chat (https://chat.fsh.plus) <label id="chat">Checking</label></li>
+      <li>HTMS (https://htms.fsh.plus) <label id="htms">Checking</label></li>
+      <li>Link (https://link.fsh.plus) <label id="link">Checking</label></li>
+      <li>Radio (https://radio.fsh.plus) <label id="radio">Checking</label></li>
+      <li>HTML (https://html.fsh.plus) <label id="html">Checking</label></li>
+      <li>ToDo (https://todo.fsh.plus) <label id="todo">Checking</label></li>
+      <li>PT (https://pt.fsh.plus) <label id="pt">Checking</label></li>
+      <h2>Internal:</h2>
+      <li>Server for dynamic content <label id="sdc">Checking</label></li>
+    </div>
   </body>
   <script>
     function check(id, url) {
