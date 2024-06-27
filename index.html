@@ -50,20 +50,25 @@
       <li>HTML (https://html.fsh.plus) <label id="html">Checking</label></li>
       <li>ToDo (https://todo.fsh.plus) <label id="todo">Checking</label></li>
       <li>PT (https://pt.fsh.plus) <label id="pt">Checking</label></li>
+      <li>Flash (https://flash.fsh.plus) <label id="flash">Checking</label></li>
       <h2>Internal:</h2>
-      <li>Server for dynamic content <label id="sdc">Checking</label></li>
+      <li>Static content <label id="ssc">Checking</label></li>
+      <li>Dynamic content <label id="sdc">Checking</label></li>
     </div>
   </body>
   <script>
     function check(id, url) {
-    fetch(url).then(tt=>{
-      if (tt.ok){
-        document.getElementById(id).innerHTML = 'Online';
-        document.getElementById(id).classList.add('on');
-      } else {
-        document.getElementById(id).innerHTML = 'Offline';
-        document.getElementById(id).classList.add('off');
-      }})
+      let timer = Date.now();
+      fetch(url)
+        .then(tt=>{
+          if (tt.ok){
+            document.getElementById(id).innerHTML = 'Online ('+Date.now()-timer+'ms)';
+            document.getElementById(id).classList.add('on');
+          } else {
+            document.getElementById(id).innerHTML = 'Offline';
+            document.getElementById(id).classList.add('off');
+          }
+        })
     }
     check('main', 'https://fsh.plus')
     check('bot', 'https://bot.fsh.plus')
@@ -75,7 +80,9 @@
     check('html', 'https://html.fsh.plus')
     check('todo', 'https://todo.fsh.plus')
     check('pt', 'https://pt.fsh.plus')
+    check('flash', 'https://flash.fsh.plus')
 
+    check('ssc', 'https://fsh-org.github.io/Fsh-plus')
     check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.host.hitbyathunder.xyz%2F')
   </script>
 </html>
