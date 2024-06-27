@@ -62,7 +62,7 @@
       fetch(url)
         .then(tt=>{
           if (tt.ok){
-            document.getElementById(id).innerHTML = 'Online ('+Date.now()-timer+'ms)';
+            document.getElementById(id).innerHTML = 'Online ('+Math.floor(Date.now()-timer)+'ms)';
             document.getElementById(id).classList.add('on');
           } else {
             document.getElementById(id).innerHTML = 'Offline';
@@ -82,7 +82,7 @@
     check('pt', 'https://pt.fsh.plus')
     check('flash', 'https://flash.fsh.plus')
 
-    check('ssc', 'https://fsh-org.github.io/Fsh-plus')
+    check('ssc', 'https://fsh.plus')
     check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.host.hitbyathunder.xyz%2F')
   </script>
 </html>
