@@ -69,6 +69,10 @@
             document.getElementById(id).classList.add('off');
           }
         })
+        .catch(err=>{
+          document.getElementById(id).innerHTML = 'Offline';
+          document.getElementById(id).classList.add('off');
+        })
     }
     check('main', 'https://fsh.plus')
     check('bot', 'https://bot.fsh.plus')
@@ -83,6 +87,6 @@
     check('flash', 'https://flash.fsh.plus')
 
     check('ssc', 'https://fsh.plus')
-    check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.host.hitbyathunder.xyz%2F')
+    check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.hitbyathunder.xyz%2F')
   </script>
 </html>
