@@ -81,14 +81,13 @@
   <script>
     function check(id, url) {
       let timer = Date.now();
-      fetch(url)
+      fetch(url, { signal: AbortSignal.timeout(10000) })
         .then(tt=>{
-          if (tt.ok){
-            document.getElementById(id).innerHTML = 'Online ('+Math.floor(Date.now()-timer)+'ms)';
-            document.getElementById(id).classList.add('on');
+          document.getElementById(id).classList.add(tt.ok?'on':'off');
+          if (tt.ok) {
+            document.getElementById(id).innerHTML = `Online (${Math.floor(Date.now()-timer)}ms)`;
           } else {
             document.getElementById(id).innerHTML = 'Offline';
-            document.getElementById(id).classList.add('off');
           }
         })
         .catch(err=>{
@@ -96,22 +95,22 @@
           document.getElementById(id).classList.add('off');
         })
     }
-    check('main', 'https://fsh.plus')
-    check('bot', 'https://bot.fsh.plus')
-    check('api', 'https://api.fsh.plus')
-    check('chat', 'https://chat.fsh.plus')
-    check('htms', 'https://htms.fsh.plus')
-    check('link', 'https://link.fsh.plus')
-    check('radio', 'https://radio.fsh.plus')
-    check('html', 'https://html.fsh.plus')
-    check('todo', 'https://todo.fsh.plus')
-    check('pt', 'https://pt.fsh.plus')
-    check('flash', 'https://flash.fsh.plus')
-    check('stog', 'https://storage.fsh.plus')
-    check('acc', 'https://account.fsh.plus')
-    check('rem', 'https://rem.fsh.plus')
+    check('main', 'https://fsh.plus');
+    check('bot', 'https://bot.fsh.plus');
+    check('api', 'https://api.fsh.plus');
+    check('chat', 'https://chat.fsh.plus');
+    check('htms', 'https://htms.fsh.plus');
+    check('link', 'https://link.fsh.plus');
+    check('radio', 'https://radio.fsh.plus');
+    check('html', 'https://html.fsh.plus');
+    check('todo', 'https://todo.fsh.plus');
+    check('pt', 'https://pt.fsh.plus');
+    check('flash', 'https://flash.fsh.plus');
+    check('stog', 'https://storage.fsh.plus');
+    check('acc', 'https://account.fsh.plus');
+    check('rem', 'https://rem.fsh.plus');
 
-    check('ssc', 'https://fsh.plus')
-    check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.hitbyathunder.xyz%2F')
+    check('ssc', 'https://fsh.plus');
+    check('sdc', 'https://corsproxy.io/?https%3A%2F%2Fpanel.hitbyathunder.xyz%2F');
   </script>
 </html>
