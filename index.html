@@ -79,6 +79,7 @@
   <script>
     function check(id, url) {
       document.getElementById(id).classList = [];
+      document.getElementById(id).innerText = 'Checking';
       let timer = Date.now();
       fetch(url, { signal: AbortSignal.timeout(10000) })
         .then(tt=>{
