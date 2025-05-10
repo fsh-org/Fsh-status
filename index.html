@@ -15,11 +15,6 @@
     <!-- ------------------ -->
     <script src="https://account.fsh.plus/script.js"></script>
     <style>
-      :root {
-        --w: var(--yellow-1);
-        --o: var(--green-1);
-        --e: var(--red-1);
-      }
       body {
         text-align: center;
       }
@@ -28,34 +23,39 @@
         text-align: center;
         margin: 0 auto;
       }
+      button {
+        display: block;
+        margin: 0px;
+        margin-left: auto;
+        padding: 2px;
+      }
+      img {
+        width: 100%;
+        aspect-ratio: 40 / 23;
+        border-radius: 1rem;
+      }
       li {
         text-align: left;
       }
       label {
-        color: var(--w);
         float: right;
-      }
-      label.on {
-        color: var(--o);
-      }
-      label.off {
-        color: var(--e);
+        color: var(--yellow-1);
       }
       li::marker {
-        color: var(--w);
+        color: var(--yellow-1);
       }
-      li:has(.on)::marker {
-        color: var(--o);
+      label.on, li:has(.on)::marker {
+        color: var(--green-1);
       }
-      li:has(.off)::marker {
-        color: var(--e);
+      label.off, li:has(.off)::marker {
+        color: var(--red-1);
       }
     </style>
   </head>
   <body>
     <h1>Fsh status</h1>
-    <h2>Pages:</h2>
     <div>
+      <button>Refresh</button>
       <li>Main site (fsh.plus) <label id="main">Checking</label></li>
       <br>
       <li>Bot (bot.fsh.plus) <label id="bot">Checking</label></li>
@@ -72,40 +72,48 @@
       <li>PT (pt.fsh.plus) <label id="pt">Checking</label></li>
       <li>Flash (flash.fsh.plus) <label id="flash">Checking</label></li>
       <li>Rem (rem.fsh.plus) <label id="rem">Checking</label></li>
-      <br>
-      <img src="/media/fshnet.png" style="width:100%;aspect-ratio:40/23;border-radius:1rem;">
     </div>
+    <br>
+    <img src="/media/fshnet.png">
   </body>
   <script>
     function check(id, url) {
+      document.getElementById(id).classList = [];
       let timer = Date.now();
       fetch(url, { signal: AbortSignal.timeout(10000) })
         .then(tt=>{
+          let time = Math.floor(Date.now()-timer);
           document.getElementById(id).classList.add(tt.ok?'on':'off');
           if (tt.ok) {
-            document.getElementById(id).innerHTML = `Online (${Math.floor(Date.now()-timer)}ms)`;
+            document.getElementById(id).innerText = `Online (${time}ms)`;
           } else {
-            document.getElementById(id).innerHTML = 'Offline';
+            document.getElementById(id).innerText = 'Offline';
           }
         })
         .catch(err=>{
-          document.getElementById(id).innerHTML = 'Offline';
+          document.getElementById(id).innerText = 'Offline';
           document.getElementById(id).classList.add('off');
         })
     }
-    check('main', 'https://fsh.plus');
-    check('bot', 'https://bot.fsh.plus');
-    check('api', 'https://api.fsh.plus');
-    check('chat', 'https://chat.fsh.plus');
-    check('htms', 'https://htms.fsh.plus');
-    check('link', 'https://link.fsh.plus');
-    check('radio', 'https://radio.fsh.plus');
-    check('html', 'https://html.fsh.plus');
-    check('todo', 'https://todo.fsh.plus');
-    check('pt', 'https://pt.fsh.plus');
-    check('flash', 'https://flash.fsh.plus');
-    check('stog', 'https://storage.fsh.plus');
-    check('acc', 'https://account.fsh.plus');
-    check('rem', 'https://rem.fsh.plus');
+    function getAllStatuses() {
+      check('main', 'https://fsh.plus');
+
+      check('bot', 'https://bot.fsh.plus');
+      check('api', 'https://api.fsh.plus');
+      check('chat', 'https://chat.fsh.plus');
+      check('link', 'https://link.fsh.plus');
+      check('stog', 'https://storage.fsh.plus');
+      check('acc', 'https://account.fsh.plus');
+
+      check('htms', 'https://htms.fsh.plus');
+      check('radio', 'https://radio.fsh.plus');
+      check('html', 'https://html.fsh.plus');
+      check('todo', 'https://todo.fsh.plus');
+      check('pt', 'https://pt.fsh.plus');
+      check('flash', 'https://flash.fsh.plus');
+      check('rem', 'https://rem.fsh.plus');
+    }
+    getAllStatuses();
+    document.getQuerySelector('button').onclick = getAllStatuses;
   </script>
 </html>
