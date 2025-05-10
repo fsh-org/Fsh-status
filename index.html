@@ -30,7 +30,7 @@
         padding: 2px;
       }
       img {
-        width: 100%;
+        max-width: 100vw;
         aspect-ratio: 40 / 23;
         border-radius: 1rem;
       }
@@ -114,6 +114,6 @@
       check('rem', 'https://rem.fsh.plus');
     }
     getAllStatuses();
-    document.getQuerySelector('button').onclick = getAllStatuses;
+    document.querySelector('button').onclick = getAllStatuses;
   </script>
 </html>
